@@ -9,6 +9,8 @@ const app = express()
 
 //connect db 
 mongoose.Promise = global.Promise;
+// Create index to remove ensure index deprecation warning
+mongoose.set('useCreateIndex', true)
 mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true })
 .then(() => console.log('Connected to the db'))
 .catch(err => {
