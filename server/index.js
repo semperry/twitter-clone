@@ -5,10 +5,13 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const users = require('./routes/users')
 const PORT = 5000 || process.env.PORT
+
+
 const app = express()
 
-//connect db 
+// Connect DB 
 mongoose.Promise = global.Promise;
+
 // Create index to remove ensure index deprecation warning
 mongoose.set('useCreateIndex', true)
 mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true })
@@ -19,11 +22,11 @@ mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true })
 })
 
 
-app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors())
 
 app.use('/api/users', users)
 
-app.listen(PORT, () => console.log(`Server is runnging on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server is alive and well on port ${PORT}`))
 

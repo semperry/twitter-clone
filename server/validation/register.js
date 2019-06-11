@@ -16,7 +16,7 @@ module.exports = data => {
   }
 
   if (!Validator.isLength(data.login, { min: 4, max: 30 })) {
-    errors.login = 'Password must be between 4 and 30 characters'
+    errors.login = 'Login name must be between 4 and 30 characters'
   }
 
   if(Validator.isEmpty(data.password)){
